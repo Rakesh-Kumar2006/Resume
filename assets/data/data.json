@@ -1,0 +1,67 @@
+{
+  "name": "Mahto Rakesh Kumar",
+  "title": "Frontend Developer",
+  "email": "mahtorakeshkumar926@gmail.com",
+  "phone": "+91 9409433664",
+  "profile": "assets/images/profileimg.jpeg",
+
+  "skills": [
+    "PHP",
+    "MySQL",
+    "Bootstrap",
+    "CSS3",
+    "Tailwind CSS"
+  ],
+
+  "education": [
+    {
+      "degree": "Bachelor of Computer Application (BCA)",
+      "college": "SVET College",
+      "year": "Present"
+    },
+    {
+        "degree": "HSEB",
+        "college": "Krishna Science School",
+        "year": "2024",
+        "percentage": "56.57%"
+    },
+
+    {
+        "degree": "GSEB",
+        "college": "ST. Gregorios High School",
+        "year": "2022",
+        "percentage": "75%"
+    }
+  ],
+
+  "projects": [
+    {
+        "title": "My Resume",
+        "description": "Built using HTML, CSS, JavaScript and Bootstrap with PDF download feature."
+    },
+
+    {
+        "title": "My Portfolio",
+        "description": "Created a responsive personal portfolio website to showcase projects, skills, and contact information using HTML, CSS, JavaScript, and Bootstrap."
+    },
+
+    {
+        "title": "A-1 Tailor Website",
+        "description": "Designed and developed a business website for a tailoring shop with service listings, pricing details, and contact features using modern frontend technologies."
+    },
+
+    {
+        "title": "QuickBite Website",
+        "description": "Built a food ordering website interface with menu display, category filtering, and responsive UI using HTML, CSS, JavaScript, and Bootstrap."
+    }
+    ],
+
+  "experience": [
+    {
+    "role": "Freshers",
+    "company": "",
+    "duration": "",
+    "description": "Looking for an opportunity to start my career and apply my skills."
+    }
+  ]
+}
