@@ -53,6 +53,11 @@
     {
         "title": "QuickBite Website",
         "description": "Built a food ordering website interface with menu display, category filtering, and responsive UI using HTML, CSS, JavaScript, and Bootstrap."
+    },
+
+    {
+        "title": "Invoice Generator System",
+        "description": "Developed an Invoice management system with pdf generation and user authentication"
     }
     ],
 
