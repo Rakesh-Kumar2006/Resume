@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
   fetch("assets/data/data.json")
     .then(res => res.json())
     .then(data => {
-      console.log("Data loaded:", data); // debug
+      console.log("Data loaded:", data);
       displayResume(data);
     })
     .catch(err => console.error("Error loading JSON:", err));
@@ -20,87 +20,96 @@ function displayResume(data) {
     </div>
 
     <!-- Technical Skills -->
-    <div class="section">
+    <div class="section avoid-break">
       <h2>Technical Skills</h2>
-      <p><strong>Frontend:</strong> ${data.skills.frontend.join(", ")}</p>
-      <p><strong>Frameworks:</strong> ${data.skills.frameworks.join(", ")}</p>
-      <p><strong>Backend:</strong> ${data.skills.backend.join(", ")}</p>
-      <p><strong>Database:</strong> ${data.skills.database.join(", ")}</p>
+      <p><strong>Frontend:</strong> ${data.skills.frontend?.join(", ") || "N/A"}</p>
+      <p><strong>Frameworks:</strong> ${data.skills.frameworks?.join(", ") || "N/A"}</p>
+      <p><strong>Backend:</strong> ${data.skills.backend?.join(", ") || "N/A"}</p>
+      <p><strong>Database:</strong> ${data.skills.database?.join(", ") || "N/A"}</p>
     </div>
 
     <!-- Languages -->
-    <div class="section">
+    <div class="section avoid-break">
       <h2>Languages Known</h2>
       <ul>
-        ${data.languages.map(lang => `<li>${lang}</li>`).join("")}
+        ${data.languages?.map(lang => `<li>${lang}</li>`).join("") || "<li>N/A</li>"}
       </ul>
     </div>
 
-    <div class="section">
+    <!-- Education -->
+    <div class="section avoid-break">
       <h2>Education</h2>
-      ${data.education.map(edu => `
-  <p>
-    <strong>${edu.degree}</strong><br>
-    ${edu.college} (${edu.year})<br>
-    ${edu.percentage ? `Percentage: ${edu.percentage}` : ""}
-  </p>
-`).join("")}
+      ${data.education?.map(edu => `
+        <p>
+          <strong>${edu.degree}</strong><br>
+          ${edu.college} (${edu.year})<br>
+          ${edu.percentage ? `Percentage: ${edu.percentage}` : ""}
+        </p>
+      `).join("") || "<p>N/A</p>"}
     </div>
 
     <div class="section">
   <h2>Projects</h2>
-  ${data.projects.map(project => `
-    <p>
-      <strong>${project.title}</strong><br>
-      ${project.description}
-    </p>
-  `).join("")}
+  <div class="project-block">
+    ${data.projects.map(project => `
+      <div class="project-item">
+        <strong>${project.title}</strong><br>
+        ${project.description}
+      </div>
+    `).join("")}
+  </div>
 </div>
 
-    <div class="section">
+    <!-- Experience -->
+    <div class="section avoid-break">
       <h2>Experience</h2>
-      ${data.experience.map(exp => `
-        <p>
-          <strong>${exp.role}</strong> - ${exp.company}<br>
-          ${exp.duration}<br>
-          ${exp.description}
-        </p>
-      `).join("")}
+      ${
+        data.experience && data.experience.length > 0
+          ? data.experience.map(exp => `
+            <p>
+              <strong>${exp.role}</strong> - ${exp.company}<br>
+              ${exp.duration}<br>
+              ${exp.description}
+            </p>
+          `).join("")
+          : `<p><strong>Fresher</strong> - Currently seeking opportunities to apply my skills and grow professionally.</p>`
+      }
     </div>
   `;
 }
 
-// PDF Download
 function downloadPDF() {
   const { jsPDF } = window.jspdf;
-
   const resume = document.querySelector("#resume");
 
-  html2canvas(resume, {
-    scale: 2,          // better quality
-    useCORS: true,
-    scrollY: -window.scrollY
-  }).then(canvas => {
-    const imgData = canvas.toDataURL("image/png");
+  window.scrollTo(0, 0);
 
+  html2canvas(resume, {
+    scale: 2,
+    useCORS: true
+  }).then(canvas => {
     const pdf = new jsPDF("p", "mm", "a4");
 
-    const imgWidth = 210; // A4 width
     const pageHeight = 295;
+    const imgWidth = 210;
     const imgHeight = (canvas.height * imgWidth) / canvas.width;
 
-    let heightLeft = imgHeight;
     let position = 0;
+    let heightLeft = imgHeight;
+
+    const imgData = canvas.toDataURL("image/png");
 
     // First page
     pdf.addImage(imgData, "PNG", 0, position, imgWidth, imgHeight);
     heightLeft -= pageHeight;
 
-    // Extra pages if content is long
+    // Fix overlapping issue
     while (heightLeft > 0) {
-      position = heightLeft - imgHeight;
+      position = position - pageHeight;
+
       pdf.addPage();
       pdf.addImage(imgData, "PNG", 0, position, imgWidth, imgHeight);
+
       heightLeft -= pageHeight;
     }
 

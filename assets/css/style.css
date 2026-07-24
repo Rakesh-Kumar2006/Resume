@@ -3,11 +3,17 @@ body {
   font-family: Arial, sans-serif;
 }
 
+/* Resume Container */
 #resume {
   max-width: 850px;
   margin: auto;
+  background: #fff;
+  padding: 25px;
+  box-sizing: border-box;
+  overflow: hidden; /* ✅ Prevent overflow issues */
 }
 
+/* Header */
 .header {
   text-align: center;
 }
@@ -18,18 +24,95 @@ body {
   object-fit: cover;
   border-radius: 50%;
   border: 3px solid #007bff;
+  margin-bottom: 10px;
 }
 
+/* Sections */
 .section {
   margin-top: 25px;
+
+  /* ✅ Stronger fix for PDF */
+  page-break-inside: avoid;
+  break-inside: avoid;
 }
 
+/* Extra safety */
+.avoid-break {
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+/* Section Headings */
 .section h2 {
   border-bottom: 2px solid #007bff;
   padding-bottom: 5px;
   margin-bottom: 15px;
+
+  /* ✅ Prevent heading separation */
+  page-break-after: avoid;
+  break-after: avoid;
 }
 
+/* ✅ PROJECT FIX (VERY IMPORTANT) */
+.project-block {
+  page-break-inside: avoid;
+}
+
+.project-item {
+  margin-bottom: 12px;
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+/* Text spacing */
+p {
+  margin-bottom: 10px;
+  line-height: 1.5;
+  word-wrap: break-word;
+}
+
+/* Lists */
 ul {
   padding-left: 20px;
+  margin: 0;
+}
+
+li {
+  margin-bottom: 5px;
+}
+
+/* Prevent unwanted overflow */
+* {
+  box-sizing: border-box;
+}
+
+/* OPTIONAL: Force section to next page */
+.page-break {
+  page-break-before: always;
+}
+
+/* ✅ PRINT OPTIMIZATION (CRITICAL) */
+@media print {
+  body {
+    background: white;
+  }
+
+  #resume {
+    box-shadow: none;
+    margin: 0;
+    padding: 15px;
+    width: 100%;
+  }
+
+  .section {
+    page-break-inside: avoid;
+  }
+
+  h2 {
+    page-break-after: avoid;
+  }
+
+  .project-item {
+    page-break-inside: avoid;
+  }
 }
