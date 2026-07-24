@@ -3,16 +3,16 @@
   "title": "Frontend Developer",
   "email": "mahtorakeshkumar926@gmail.com",
   "phone": "+91 9409433664",
-  "profile": "assets/images/profileimg.jpeg",
+  "profile": "assets/images/profileimg .jpeg",
 
   "skills": {
-  "frontend": ["HTML", "CSS3", "JavaScript", "React JS"],
-  "frameworks": ["Bootstrap", "Tailwind CSS", "Next.js"],
+  "frontend": ["HTML", "JavaScript", "React JS"],
+  "frameworks": ["CSS3", "Bootstrap", "Tailwind CSS", "Next.js"],
   "backend": ["PHP"],
   "database": ["MySQL", "MongoDB"]
   },
 
-  "languages": ["English", "Hindi"],
+  "languages": ["English", "Hindi", "Gujarati"],
 
   "education": [
     {
@@ -31,7 +31,7 @@
         "degree": "GSEB",
         "college": "ST. Gregorios High School",
         "year": "2022",
-        "percentage": "75%"
+        "percentage": "57.33%"
     }
   ],
 
