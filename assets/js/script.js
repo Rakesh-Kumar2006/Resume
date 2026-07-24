@@ -19,10 +19,20 @@ function displayResume(data) {
       <p>${data.email} | ${data.phone}</p>
     </div>
 
+    <!-- Technical Skills -->
     <div class="section">
-      <h2>Skills</h2>
+      <h2>Technical Skills</h2>
+      <p><strong>Frontend:</strong> ${data.skills.frontend.join(", ")}</p>
+      <p><strong>Frameworks:</strong> ${data.skills.frameworks.join(", ")}</p>
+      <p><strong>Backend:</strong> ${data.skills.backend.join(", ")}</p>
+      <p><strong>Database:</strong> ${data.skills.database.join(", ")}</p>
+    </div>
+
+    <!-- Languages -->
+    <div class="section">
+      <h2>Languages Known</h2>
       <ul>
-        ${data.skills.map(skill => `<li>${skill}</li>`).join("")}
+        ${data.languages.map(lang => `<li>${lang}</li>`).join("")}
       </ul>
     </div>
 

@@ -5,13 +5,14 @@
   "phone": "+91 9409433664",
   "profile": "assets/images/profileimg.jpeg",
 
-  "skills": [
-    "PHP",
-    "MySQL",
-    "Bootstrap",
-    "CSS3",
-    "Tailwind CSS"
-  ],
+  "skills": {
+  "frontend": ["HTML", "CSS3", "JavaScript", "React JS"],
+  "frameworks": ["Bootstrap", "Tailwind CSS", "Next.js"],
+  "backend": ["PHP"],
+  "database": ["MySQL", "MongoDB"]
+  },
+
+  "languages": ["English", "Hindi"],
 
   "education": [
     {
