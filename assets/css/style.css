@@ -10,7 +10,6 @@ body {
   background: #fff;
   padding: 25px;
   box-sizing: border-box;
-  overflow: hidden; /* ✅ Prevent overflow issues */
 }
 
 /* Header */
@@ -30,30 +29,25 @@ body {
 /* Sections */
 .section {
   margin-top: 25px;
-
-  /* ✅ Stronger fix for PDF */
   page-break-inside: avoid;
   break-inside: avoid;
 }
 
-/* Extra safety */
-.avoid-break {
-  page-break-inside: avoid;
-  break-inside: avoid;
-}
-
-/* Section Headings */
+/* Headings */
 .section h2 {
   border-bottom: 2px solid #007bff;
   padding-bottom: 5px;
   margin-bottom: 15px;
-
-  /* ✅ Prevent heading separation */
   page-break-after: avoid;
-  break-after: avoid;
 }
 
-/* ✅ PROJECT FIX (VERY IMPORTANT) */
+/* ✅ FORCE PROJECTS TO NEW PAGE */
+.section.projects {
+  page-break-before: always;
+  break-before: always;
+}
+
+/* Projects */
 .project-block {
   page-break-inside: avoid;
 }
@@ -61,14 +55,13 @@ body {
 .project-item {
   margin-bottom: 12px;
   page-break-inside: avoid;
-  break-inside: avoid;
 }
 
-/* Text spacing */
+/* Text */
 p {
   margin-bottom: 10px;
   line-height: 1.5;
-  word-wrap: break-word;
+  word-break: break-word;
 }
 
 /* Lists */
@@ -81,24 +74,18 @@ li {
   margin-bottom: 5px;
 }
 
-/* Prevent unwanted overflow */
+/* Global box sizing */
 * {
   box-sizing: border-box;
 }
 
-/* OPTIONAL: Force section to next page */
-.page-break {
-  page-break-before: always;
-}
-
-/* ✅ PRINT OPTIMIZATION (CRITICAL) */
+/* PRINT FIX (VERY IMPORTANT) */
 @media print {
   body {
     background: white;
   }
 
   #resume {
-    box-shadow: none;
     margin: 0;
     padding: 15px;
     width: 100%;
@@ -108,11 +95,11 @@ li {
     page-break-inside: avoid;
   }
 
-  h2 {
-    page-break-after: avoid;
+  .section.projects {
+    page-break-before: always;
   }
 
-  .project-item {
-    page-break-inside: avoid;
+  h2 {
+    page-break-after: avoid;
   }
 }

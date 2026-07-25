@@ -48,7 +48,7 @@ function displayResume(data) {
       `).join("") || "<p>N/A</p>"}
     </div>
 
-    <div class="section">
+  <div class="section page-break">
   <h2>Projects</h2>
   <div class="project-block">
     ${data.projects.map(project => `
