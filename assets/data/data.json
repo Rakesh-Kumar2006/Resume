@@ -59,6 +59,11 @@
     {
         "title": "Invoice Generator System",
         "description": "Developed an Invoice management system with pdf generation and user authentication"
+    },
+
+    {
+        "title": "Freshify Website",
+        "description": "Developed a modern online grocery shopping platform offering a wide range of groceries and household essentials with an intuitive user interface, product categories, and a seamless shopping experience."
     }
     ],
 
