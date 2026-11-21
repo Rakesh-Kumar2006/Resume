@@ -28,6 +28,14 @@ function displayResume(data) {
       <p><strong>Database:</strong> ${data.skills.database?.join(", ") || "N/A"}</p>
     </div>
 
+    <!-- Tools -->
+    <div class="section avoid-break">
+      <h2>Tools</h2>
+      <p><strong>Build & Ship:</strong> ${data.tools?.buildAndShip?.join(", ") || "N/A"}</p>
+      <p><strong>Design & UI:</strong> ${data.tools?.designAndUI?.join(", ") || "N/A"}</p>
+      <p><strong>Server & Data:</strong> ${data.tools?.serverAndData?.join(", ") || "N/A"}</p>
+    </div>
+
     <!-- Languages -->
     <div class="section avoid-break">
       <h2>Languages Known</h2>
@@ -48,17 +56,17 @@ function displayResume(data) {
       `).join("") || "<p>N/A</p>"}
     </div>
 
-  <div class="section projects">
-  <h2>Projects</h2>
-  <div class="project-block">
-    ${data.projects.map(project => `
-      <div class="project-item">
-        <strong>${project.title}</strong><br>
-        ${project.description}
+    <div class="section projects">
+      <h2>Projects</h2>
+      <div class="project-block">
+        ${data.projects.map(project => `
+          <div class="project-item">
+            <strong>${project.title}</strong><br>
+            ${project.description}
+          </div>
+        `).join("")}
       </div>
-    `).join("")}
-  </div>
-</div>
+    </div>
 
     <!-- Experience -->
     <div class="section avoid-break">
@@ -81,38 +89,53 @@ function displayResume(data) {
 function downloadPDF() {
   const { jsPDF } = window.jspdf;
   const resume = document.querySelector("#resume");
+  const projectsSection = resume.querySelector(".section.projects");
 
   window.scrollTo(0, 0);
+
+  // Calculate 1 A4 page height in pixels based on #resume width
+  const pdfWidth = 210;
+  const pdfHeight = 297;
+  const pageHeightPx = (resume.offsetWidth * pdfHeight) / pdfWidth;
+
+  // Temporarily push Projects to the top of Page 2 for PDF export only
+  if (projectsSection && projectsSection.offsetTop < pageHeightPx) {
+    const currentMargin = parseFloat(getComputedStyle(projectsSection).marginTop) || 0;
+    const gapToPage2 = pageHeightPx - projectsSection.offsetTop;
+    projectsSection.style.marginTop = `${currentMargin + gapToPage2 + 25}px`;
+  }
 
   html2canvas(resume, {
     scale: 2,
     useCORS: true
-  }).then(canvas => {
-    const pdf = new jsPDF("p", "mm", "a4");
+  })
+    .then(canvas => {
+      const pdf = new jsPDF("p", "mm", "a4");
+      const imgWidth = pdfWidth;
+      const imgHeight = (canvas.height * imgWidth) / canvas.width;
 
-    const pageHeight = 295;
-    const imgWidth = 210;
-    const imgHeight = (canvas.height * imgWidth) / canvas.width;
+      let position = 0;
+      let heightLeft = imgHeight;
+      const imgData = canvas.toDataURL("image/png");
 
-    let position = 0;
-    let heightLeft = imgHeight;
-
-    const imgData = canvas.toDataURL("image/png");
-
-    // First page
-    pdf.addImage(imgData, "PNG", 0, position, imgWidth, imgHeight);
-    heightLeft -= pageHeight;
-
-    // Fix overlapping issue
-    while (heightLeft > 0) {
-      position = position - pageHeight;
-
-      pdf.addPage();
+      // First page
       pdf.addImage(imgData, "PNG", 0, position, imgWidth, imgHeight);
+      heightLeft -= pdfHeight;
 
-      heightLeft -= pageHeight;
-    }
+      // Additional pages (> 1 avoids blank trailing page from rounding)
+      while (heightLeft > 1) {
+        position -= pdfHeight;
+        pdf.addPage();
+        pdf.addImage(imgData, "PNG", 0, position, imgWidth, imgHeight);
+        heightLeft -= pdfHeight;
+      }
 
-    pdf.save("resume.pdf");
-  });
+      pdf.save("resume.pdf");
+    })
+    .finally(() => {
+      // Restore normal spacing on the webpage immediately
+      if (projectsSection) {
+        projectsSection.style.marginTop = "";
+      }
+    });
 }

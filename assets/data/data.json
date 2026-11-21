@@ -3,13 +3,19 @@
   "title": "Frontend Developer",
   "email": "mahtorakeshkumar926@gmail.com",
   "phone": "+91 9409433664",
-  "profile": "assets/images/profileimg.jpeg",
+  "profile": "assets/images/profileimg.png",
 
   "skills": {
-  "frontend": ["HTML", "JavaScript", "React JS"],
-  "frameworks": ["CSS3", "Bootstrap", "Tailwind CSS", "Next.js"],
-  "backend": ["PHP"],
-  "database": ["MySQL", "MongoDB"]
+    "frontend": ["HTML", "JavaScript", "React JS"],
+    "frameworks": ["CSS3", "Bootstrap", "Tailwind CSS", "Next.js"],
+    "backend": ["PHP"],
+    "database": ["MySQL", "MongoDB"]
+  },
+
+  "tools": {
+    "buildAndShip": ["VS Code", "Visual Studio", "GitHub", "Vercel"],
+    "designAndUI": ["Figma", "Canva", "Bootstrap", "Tailwind"],
+    "serverAndData": ["XAMPP", "MySQL", "MongoDB", "Render"]
   },
 
   "languages": ["English", "Hindi", "Gujarati"],
@@ -21,58 +27,52 @@
       "year": "Present"
     },
     {
-        "degree": "HSEB",
-        "college": "Krishna Science School",
-        "year": "2024",
-        "percentage": "56.57%"
+      "degree": "HSEB",
+      "college": "Krishna Science School",
+      "year": "2024",
+      "percentage": "56.57%"
     },
-
     {
-        "degree": "GSEB",
-        "college": "ST. Gregorios High School",
-        "year": "2022",
-        "percentage": "57.33%"
+      "degree": "GSEB",
+      "college": "ST. Gregorios High School",
+      "year": "2022",
+      "percentage": "57.33%"
     }
   ],
 
   "projects": [
     {
-        "title": "My Resume",
-        "description": "Built using HTML, CSS, JavaScript and Bootstrap with PDF download feature."
+      "title": "My Resume",
+      "description": "Built using HTML, CSS, JavaScript and Bootstrap with PDF download feature."
     },
-
     {
-        "title": "My Portfolio",
-        "description": "Created a responsive personal portfolio website to showcase projects, skills, and contact information using HTML, CSS, JavaScript, and Bootstrap."
+      "title": "My Portfolio",
+      "description": "Created a responsive personal portfolio website to showcase projects, skills, and contact information using HTML, CSS, JavaScript, and Bootstrap."
     },
-
     {
-        "title": "A-1 Tailor Website",
-        "description": "Designed and developed a business website for a tailoring shop with service listings, pricing details, and contact features using modern frontend technologies."
+      "title": "A-1 Tailor Website",
+      "description": "Designed and developed a business website for a tailoring shop with service listings, pricing details, and contact features using modern frontend technologies."
     },
-
     {
-        "title": "QuickBite Website",
-        "description": "Built a food ordering website interface with menu display, category filtering, and responsive UI using HTML, CSS, JavaScript, and Bootstrap."
+      "title": "QuickBite Website",
+      "description": "Built a food ordering website interface with menu display, category filtering, and responsive UI using HTML, CSS, JavaScript, and Bootstrap."
     },
-
     {
-        "title": "Invoice Generator System",
-        "description": "Developed an Invoice management system with pdf generation and user authentication"
+      "title": "Invoice Generator System",
+      "description": "Developed an Invoice management system with pdf generation and user authentication"
     },
-
     {
-        "title": "Freshify Website",
-        "description": "Developed a modern online grocery shopping platform offering a wide range of groceries and household essentials with an intuitive user interface, product categories, and a seamless shopping experience."
+      "title": "Freshify Website",
+      "description": "Developed a modern online grocery shopping platform offering a wide range of groceries and household essentials with an intuitive user interface, product categories, and a seamless shopping experience."
     }
-    ],
+  ],
 
   "experience": [
     {
-    "role": "Freshers",
-    "company": "",
-    "duration": "",
-    "description": "Looking for an opportunity to start my career and apply my skills."
+      "role": "Freshers",
+      "company": "",
+      "duration": "",
+      "description": "Looking for an opportunity to start my career and apply my skills."
     }
   ]
 }

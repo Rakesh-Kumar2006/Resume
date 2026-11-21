@@ -1,3 +1,8 @@
+/* Global box sizing */
+* {
+  box-sizing: border-box;
+}
+
 body {
   background: #f4f6f9;
   font-family: Arial, sans-serif;
@@ -5,6 +10,7 @@ body {
 
 /* Resume Container */
 #resume {
+  position: relative;
   max-width: 850px;
   margin: auto;
   background: #fff;
@@ -41,9 +47,9 @@ body {
   page-break-after: avoid;
 }
 
-/* Add space before Projects */
+/* Push Projects cleanly to Page 2 in PDF */
 .section.projects {
-  margin-top: 150px; /* 🔥 adjust this value */
+  margin-top: 220px;
 }
 
 /* Projects */
@@ -73,11 +79,6 @@ li {
   margin-bottom: 5px;
 }
 
-/* Global box sizing */
-* {
-  box-sizing: border-box;
-}
-
 /* PRINT FIX (VERY IMPORTANT) */
 @media print {
   body {
@@ -95,6 +96,7 @@ li {
   }
 
   .section.projects {
+    margin-top: 0;
     page-break-before: always;
   }
 
